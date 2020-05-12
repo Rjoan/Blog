@@ -16,15 +16,19 @@
         <?php
 
         $article = new Article();
-        $articles = $article->getArticles();
-        while($article = $articles->fetch()) { ?>
+        $articles = $article->getArticle($_GET['articleId']);
+        $article = $articles->fetch(); 
 
-        <h2><a href="single.php?articleId=<?= htmlspecialchars($article['id']);?>"><?= htmlspecialchars($article['title']);?></a></h2>
+        ?>
+
+            <h2><?= $article['title'] ?></h2>
 
             <p><?= $article['content'] ?></p>
             <p><i><?= $article['author'] . ' ' . $article['createdAt']?></i></p>
 
-        <?php } $articles->closeCursor(); ?>
+        <?php $articles->closeCursor(); ?>
+
+        <a href="home.php">Retour à l'accueil</a>
 
     </div>
 </body>

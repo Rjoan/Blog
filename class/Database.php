@@ -13,7 +13,10 @@ class Database {
 
             $db = new PDO(self::DB_HOST, self::DB_USER, self::DB_PASS);
             $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            return 'ok';
+
+            //retourner la connexion 
+            
+            return $db;
 
         } catch(Exception $e) {
 
